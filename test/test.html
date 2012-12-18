@@ -1,0 +1,34 @@
+﻿<html>
+
+<head>
+<title>tpl test</title>
+<script type="text/javascript" src="../lib/tpl.js"></script>
+</head>
+
+<body>
+<script type="text/html" id="tpl.user">
+    <% if (isboy) { %>
+        <li><%=name%> is a boy</li>
+    <% } else { %>
+        <li><%=name%> is a girl</li>
+    <% } %>
+</script>
+
+<script type="text/html" id="tpl.users">
+    <% for (i in users) { %>
+        <%= tpl.user(users[i]) %>
+    <% } %>
+</script>
+
+<script type="text/javascript">
+    tpl();
+    
+    var data = [{name: "panda", isboy: true},
+                {name: "bobo", isboy: true},
+                {name: "ling", isboy: false}];
+            
+    document.write(tpl.users({users: data}));    
+</script>
+</body>
+
+</html>
